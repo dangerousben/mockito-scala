@@ -17,6 +17,8 @@ object Dependencies {
     "org.hamcrest" % "hamcrest-core" % "2.2"   % "provided"
   )
 
+  val utest = "com.lihaoyi" %% "utest" % "0.7.4"
+
   def scalaReflection(scalaVersion: String) = "org.scala-lang" % "scala-reflect" % scalaVersion
 
   val cats   = "org.typelevel" %% "cats-core"   % "2.0.0" % "provided"

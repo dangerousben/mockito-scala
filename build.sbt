@@ -84,6 +84,15 @@ lazy val specs2 = (project in file("specs2"))
     libraryDependencies ++= Dependencies.specs2
   )
 
+lazy val utest = (project in file("utest"))
+  .dependsOn(core)
+  .settings(
+    name := "mockito-scala-utest",
+    commonSettings,
+    publishSettings,
+    libraryDependencies += Dependencies.utest
+  )
+
 lazy val cats = (project in file("cats"))
   .dependsOn(core)
   .dependsOn(common % "compile-internal, test-internal")
