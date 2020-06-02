@@ -6,6 +6,8 @@ import scala.concurrent.{ ExecutionContext, Future }
 import utest._
 import utest.framework.Executor
 
+// TOOD: write tests covering both sync and asnyc case class
+// TODO: write some documentation including caveats about thread madness
 trait MockitoSessionFixture extends Executor {
   override def utestWrap(path: Seq[String], runBody: => concurrent.Future[Any])(implicit ec: ExecutionContext) = {
     val mockEc = ExecutionContext.fromExecutor(Executors.newSingleThreadExecutor(new ThreadFactory {
