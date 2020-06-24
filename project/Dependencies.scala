@@ -10,6 +10,8 @@ object Dependencies {
     "ru.vyarus"     % "generics-resolver" % "3.0.2",
   )
 
+  val kindProjector = "org.typelevel" %% "kind-projector" % "0.11.0" cross CrossVersion.full
+
   val scalatest = "org.scalatest" %% "scalatest" % scalatestVersion
 
   val specs2 = Seq(

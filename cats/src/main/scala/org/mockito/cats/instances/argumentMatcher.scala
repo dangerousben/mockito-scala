@@ -17,6 +17,13 @@ case class ProductArgumentMatcher[A, B](fa: ArgumentMatcher[A], fb: ArgumentMatc
 }
 
 trait ArgumentMatcherInstances {
+  val argMatcherToFn1: ArgumentMatcher ~> (* => Boolean) =
+    λ[ArgumentMatcher ~> (* => Boolean)](_.matches _)
+
+  val fn1ToArgMatcher: (* => Boolean) ~> ArgumentMatcher = new ((* => Boolean) ~> ArgumentMatcher) {
+    def apply[A](fn: A => Boolean) = new ArgumentMatcher[A] { override def matches(a: A) = fn(a) }
+  }
+
   implicit val argumentMatcherInstance: ContravariantMonoidal[ArgumentMatcher] with MonoidK[ArgumentMatcher] =
     new ContravariantMonoidal[ArgumentMatcher] with MonoidK[ArgumentMatcher] {
       override def unit                                                          = narrow(AnyArgumentMatcher)

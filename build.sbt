@@ -92,6 +92,7 @@ lazy val cats = (project in file("cats"))
     name := "mockito-scala-cats",
     commonSettings,
     publishSettings,
+    addCompilerPlugin(Dependencies.kindProjector),
     libraryDependencies ++= Seq(
       Dependencies.cats,
       Dependencies.catsLaws % "test",
