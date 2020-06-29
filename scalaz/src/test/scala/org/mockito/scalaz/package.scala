@@ -31,5 +31,7 @@ package object scalaz {
     def returnsOptionFrom[A, B](a: A, b: B): Option[String]
 
     def returnsFutureOptionFrom[A, B](a: A, b: B): Future[Option[String]]
+
+    def takesTuple(t: (String, Integer)): String
   }
 }

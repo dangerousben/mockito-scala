@@ -104,15 +104,17 @@ lazy val cats = (project in file("cats"))
 
 lazy val scalaz = (project in file("scalaz"))
   .dependsOn(core)
-  .dependsOn(common % "compile-internal, test-internal")
+  .dependsOn(common % "compile-internal, test-internal, test->test")
   .dependsOn(macroSub % "compile-internal, test-internal")
   .settings(
     name := "mockito-scala-scalaz",
     commonSettings,
     publishSettings,
     libraryDependencies ++= Seq(
+      Dependencies.disciplineScalatest % "test",
       Dependencies.scalaz,
-      Dependencies.scalatest % "test"
+      Dependencies.scalatest % "test",
+      Dependencies.scalazScalacheckBinding % "test"
     ),
   )
 
